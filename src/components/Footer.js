@@ -49,8 +49,8 @@ export default function Footer() {
               Your Agency
             </Link>
             <p className="mt-4 text-gray-400 text-sm">
-              Empowering Shopify stores with data-driven solutions for sustainable
-              growth.
+              Empowering Shopify stores with data-driven solutions for
+              sustainable growth.
             </p>
           </div>
 
@@ -132,4 +132,4 @@ export default function Footer() {
       </div>
     </footer>
   );
-} 
+}
