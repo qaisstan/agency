@@ -1,7 +1,7 @@
 .
 ├── README.md
+├── components.json
 ├── draft.md
-├── eslint.config.mjs
 ├── filetree.txt
 ├── generateFileTree.js
 ├── jsconfig.json
@@ -21,8 +21,17 @@
 │   │   ├── globals.css
 │   │   ├── layout.js
 │   │   └── page.js
-│   └── components
-│       └── Navigation.js
+│   ├── components
+│   │   ├── AboutUs.js
+│   │   ├── CaseStudies.js
+│   │   ├── Contact.js
+│   │   ├── FAQ.js
+│   │   ├── Footer.js
+│   │   ├── Hero.js
+│   │   ├── Navigation.js
+│   │   └── Services.js
+│   └── lib
+│       └── utils.js
 └── tailwind.config.mjs
 
-5 directories, 21 files
+6 directories, 29 files
