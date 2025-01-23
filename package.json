@@ -10,11 +10,14 @@
     "watch:tree": "node generateFileTree.js"
   },
   "dependencies": {
+    "@radix-ui/react-navigation-menu": "^1.2.4",
     "chokidar": "^4.0.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "framer-motion": "^12.0.1",
     "googleapis": "^144.0.0",
     "lucide-react": "^0.473.0",
+    "motion": "^12.0.1",
     "next": "15.1.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

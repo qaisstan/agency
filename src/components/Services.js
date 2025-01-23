@@ -2,185 +2,152 @@
 import { useState } from "react";
 
 export default function Services() {
-  const [activeTab, setActiveTab] = useState("retainer");
-
   const retainerPlans = [
     {
-      name: "Basic Growth Plan",
-      price: "$997",
+      name: "Growth Essentials Plan",
+      price: "$1,500",
+      description: "Perfect for Shopify stores needing ongoing maintenance and steady improvements.",
       features: [
-        "Shopify Store Maintenance",
-        "Basic Analytics Setup",
-        "Minor Optimizations",
-        "Monthly Performance Report",
-        "Email Support",
+        "Theme maintenance and minor updates",
+        "App installations and integrations",
+        "Speed and performance optimization",
+        "Monthly store backups and security monitoring",
+        "Analytics review (GA4, heatmaps)",
+        "Basic A/B testing (up to 2 tests/month)",
+        "Monthly performance insights"
       ],
-      trial: true,
     },
     {
-      name: "Advanced Optimization Plan",
-      price: "$2,497",
+      name: "Growth Accelerator Plan",
+      price: "$3,000",
+      description: "Ideal for scaling Shopify stores focused on aggressive growth and optimization.",
       features: [
-        "Comprehensive CRO",
-        "Advanced Analytics",
-        "A/B Testing",
-        "Custom Shopify Development",
-        "Weekly Strategy Calls",
-        "Priority Support",
+        "Custom feature development",
+        "Advanced theme updates and customizations",
+        "Speed optimization and technical SEO",
+        "Full priority support (15 hours/month)",
+        "In-depth analytics and journey analysis",
+        "A/B testing (up to 5 tests/month)",
+        "Comprehensive monthly reports"
       ],
-      trial: true,
+      featured: true,
     },
   ];
 
   const standaloneServices = [
     {
-      name: "Shopify Store Setup",
-      price: "$4,997",
-      description:
-        "Complete store setup including theme customization, product upload, and payment integration",
-      deliverables: [
-        "Custom Theme Setup",
-        "Product Configuration",
-        "Payment Gateway Integration",
-        "Basic SEO Setup",
-      ],
+      name: "Store Maintenance",
+      description: "Keep your store running smoothly with essential updates and monitoring",
+      icon: "🛠️",
     },
     {
-      name: "CRO Audit",
-      price: "$1,997",
-      description:
-        "Comprehensive analysis of your store's conversion funnel with actionable recommendations",
-      deliverables: [
-        "Heatmap Analysis",
-        "User Journey Mapping",
-        "Conversion Funnel Analysis",
-        "Detailed Recommendations",
-      ],
+      name: "Performance Optimization",
+      description: "Boost your store's speed and technical performance",
+      icon: "⚡",
     },
     {
-      name: "Marketing Analytics Setup",
-      price: "$1,497",
-      description:
-        "Professional setup of your analytics stack for data-driven decisions",
-      deliverables: [
-        "GA4 Configuration",
-        "Google Tag Manager Setup",
-        "Custom Event Tracking",
-        "Dashboard Creation",
-      ],
+      name: "Analytics Setup",
+      description: "Get clear insights with professional analytics configuration",
+      icon: "📊",
+    },
+    {
+      name: "A/B Testing",
+      description: "Make data-driven decisions with structured testing",
+      icon: "🎯",
     },
   ];
 
   return (
-    <section id="services" className="py-20 px-4">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-          Services Tailored to Your Growth
-        </h2>
-
-        {/* Tab Navigation */}
-        <div className="flex justify-center mb-12">
-          <div className="inline-flex rounded-lg border border-gray-200 p-1">
-            <button
-              onClick={() => setActiveTab("retainer")}
-              className={`px-4 py-2 rounded-md text-sm font-medium ${
-                activeTab === "retainer"
-                  ? "bg-blue-600 text-white"
-                  : "text-gray-700 hover:text-gray-900"
-              }`}
-            >
-              Retainer Plans
-            </button>
-            <button
-              onClick={() => setActiveTab("standalone")}
-              className={`px-4 py-2 rounded-md text-sm font-medium ${
-                activeTab === "standalone"
-                  ? "bg-blue-600 text-white"
-                  : "text-gray-700 hover:text-gray-900"
-              }`}
-            >
-              Standalone Services
-            </button>
-          </div>
+    <section id="services" className="py-24 bg-neutral-950">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            Monthly Retainer Options
+          </h2>
+          <p className="text-neutral-400 max-w-2xl mx-auto">
+            Choose the plan that best fits your growth goals
+          </p>
         </div>
 
         {/* Retainer Plans */}
-        <div className={activeTab === "retainer" ? "block" : "hidden"}>
-          <div className="grid md:grid-cols-2 gap-8">
-            {retainerPlans.map((plan) => (
-              <div
-                key={plan.name}
-                className="border border-gray-200 rounded-lg p-8 hover:shadow-lg transition-shadow"
-              >
-                <h3 className="text-2xl font-bold mb-4">{plan.name}</h3>
-                <p className="text-4xl font-bold mb-6">
-                  {plan.price}
-                  <span className="text-base font-normal text-gray-600">
-                    /month
+        <div className="grid md:grid-cols-2 gap-8 mb-20">
+          {retainerPlans.map((plan) => (
+            <div
+              key={plan.name}
+              className={`relative rounded-2xl p-8 ${
+                plan.featured
+                  ? "bg-blue-600 border-blue-500"
+                  : "bg-neutral-900 border-neutral-800"
+              } border-2`}
+            >
+              {plan.featured && (
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                  <span className="bg-blue-500 text-white px-3 py-1 rounded-full text-sm">
+                    Recommended
                   </span>
-                </p>
-                <ul className="space-y-3 mb-8">
-                  {plan.features.map((feature) => (
-                    <li key={feature} className="flex items-center">
-                      <svg
-                        className="w-5 h-5 text-green-500 mr-2"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                <button className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
-                  Start 14-Day Free Trial
-                </button>
+                </div>
+              )}
+              <div className="mb-6">
+                <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
+                <p className="text-neutral-400 mb-4">{plan.description}</p>
+                <div className="text-3xl font-bold text-white mb-1">
+                  {plan.price}
+                  <span className="text-lg text-neutral-400">/month</span>
+                </div>
               </div>
-            ))}
-          </div>
+
+              <ul className="space-y-4 mb-8">
+                {plan.features.map((feature) => (
+                  <li key={feature} className="flex items-start">
+                    <svg
+                      className={`w-5 h-5 ${
+                        plan.featured ? "text-blue-300" : "text-blue-500"
+                      } mr-3 mt-1`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    <span className="text-neutral-300">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <button
+                className={`w-full py-4 rounded-lg font-semibold transition-colors ${
+                  plan.featured
+                    ? "bg-white text-blue-600 hover:bg-neutral-100"
+                    : "bg-blue-600 text-white hover:bg-blue-700"
+                }`}
+              >
+                Get Started
+              </button>
+            </div>
+          ))}
         </div>
 
         {/* Standalone Services */}
-        <div className={activeTab === "standalone" ? "block" : "hidden"}>
-          <div className="grid md:grid-cols-3 gap-8">
+        <div className="mt-24">
+          <h3 className="text-2xl font-bold text-white text-center mb-12">
+            Standalone Services
+          </h3>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {standaloneServices.map((service) => (
               <div
                 key={service.name}
-                className="border border-gray-200 rounded-lg p-8 hover:shadow-lg transition-shadow"
+                className="bg-neutral-900 rounded-xl p-6 hover:bg-neutral-800 transition-colors"
               >
-                <h3 className="text-xl font-bold mb-2">{service.name}</h3>
-                <p className="text-3xl font-bold mb-4">{service.price}</p>
-                <p className="text-gray-600 mb-6">{service.description}</p>
-                <ul className="space-y-3 mb-8">
-                  {service.deliverables.map((item) => (
-                    <li key={item} className="flex items-center">
-                      <svg
-                        className="w-5 h-5 text-blue-500 mr-2"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <button className="w-full bg-gray-900 text-white py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors">
-                  Get Started
-                </button>
+                <span className="text-3xl mb-4 block">{service.icon}</span>
+                <h4 className="text-xl font-semibold text-white mb-2">
+                  {service.name}
+                </h4>
+                <p className="text-neutral-400">{service.description}</p>
               </div>
             ))}
           </div>

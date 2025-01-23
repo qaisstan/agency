@@ -100,7 +100,7 @@ export default function Footer() {
             <ul className="mt-4 space-y-2">
               <li>
                 <a
-                  href="mailto:hello@youragency.com"
+                  href="mailto:contact@turboecom.com"
                   className="text-gray-400 hover:text-white text-sm"
                 >
                   hello@youragency.com
