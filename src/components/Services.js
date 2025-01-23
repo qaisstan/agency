@@ -6,7 +6,8 @@ export default function Services() {
     {
       name: "Growth Essentials Plan",
       price: "$1,500",
-      description: "Perfect for Shopify stores needing ongoing maintenance and steady improvements.",
+      description:
+        "Perfect for Shopify stores needing ongoing maintenance and steady improvements.",
       features: [
         "Theme maintenance and minor updates",
         "App installations and integrations",
@@ -14,13 +15,14 @@ export default function Services() {
         "Monthly store backups and security monitoring",
         "Analytics review (GA4, heatmaps)",
         "Basic A/B testing (up to 2 tests/month)",
-        "Monthly performance insights"
+        "Monthly performance insights",
       ],
     },
     {
       name: "Growth Accelerator Plan",
       price: "$3,000",
-      description: "Ideal for scaling Shopify stores focused on aggressive growth and optimization.",
+      description:
+        "Ideal for scaling Shopify stores focused on aggressive growth and optimization.",
       features: [
         "Custom feature development",
         "Advanced theme updates and customizations",
@@ -28,7 +30,7 @@ export default function Services() {
         "Full priority support (15 hours/month)",
         "In-depth analytics and journey analysis",
         "A/B testing (up to 5 tests/month)",
-        "Comprehensive monthly reports"
+        "Comprehensive monthly reports",
       ],
       featured: true,
     },
@@ -37,7 +39,8 @@ export default function Services() {
   const standaloneServices = [
     {
       name: "Store Maintenance",
-      description: "Keep your store running smoothly with essential updates and monitoring",
+      description:
+        "Keep your store running smoothly with essential updates and monitoring",
       icon: "🛠️",
     },
     {
@@ -47,7 +50,8 @@ export default function Services() {
     },
     {
       name: "Analytics Setup",
-      description: "Get clear insights with professional analytics configuration",
+      description:
+        "Get clear insights with professional analytics configuration",
       icon: "📊",
     },
     {
@@ -88,7 +92,9 @@ export default function Services() {
                 </div>
               )}
               <div className="mb-6">
-                <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
+                <h3 className="text-2xl font-bold text-white mb-2">
+                  {plan.name}
+                </h3>
                 <p className="text-neutral-400 mb-4">{plan.description}</p>
                 <div className="text-3xl font-bold text-white mb-1">
                   {plan.price}

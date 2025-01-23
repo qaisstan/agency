@@ -103,7 +103,7 @@ export default function Footer() {
                   href="mailto:contact@turboecom.com"
                   className="text-gray-400 hover:text-white text-sm"
                 >
-                  hello@youragency.com
+                  contact@turboecom.com
                 </a>
               </li>
               <li className="flex space-x-4">

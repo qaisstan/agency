@@ -95,8 +95,8 @@ export default function FAQ() {
             Still have questions?
           </h3>
           <p className="text-blue-100 mb-8">
-            Book a free consultation call or send us an email. We're here to help
-            you make the right decision for your business.
+            Book a free consultation call or send us an email. We're here to
+            help you make the right decision for your business.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a

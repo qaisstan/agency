@@ -1,10 +1,43 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { BackgroundBeams } from "./ui/background-beams";
 import Navigation from "./Navigation";
 
 export default function Hero() {
+  useEffect(() => {
+    // Dynamically load Google Calendar's CSS and JS
+    const loadGoogleCalendarButton = () => {
+      // Load the stylesheet
+      const link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href =
+        "https://calendar.google.com/calendar/scheduling-button-script.css";
+      document.head.appendChild(link);
+
+      // Load the script
+      const script = document.createElement("script");
+      script.src =
+        "https://calendar.google.com/calendar/scheduling-button-script.js";
+      script.async = true;
+      script.onload = () => {
+        // Initialize the button once script is loaded
+        const target = document.querySelector(".google-calendar-button");
+        if (window.calendar?.schedulingButton && target) {
+          window.calendar.schedulingButton.load({
+            url: "https://calendar.google.com/calendar/appointments/schedules/AcZssZ1Muso18VEkX645EAFnrNGKPxzS_vFv0Awrd8MpJ6faiphWvytTEtHmLrTnH5np40VZ8cxZTgvS?gv=true",
+            color: "#F6BF26", // Customize button color
+            label: "Book a call", // Customize button label
+            target,
+          });
+        }
+      };
+      document.body.appendChild(script);
+    };
+
+    loadGoogleCalendarButton();
+  }, []);
+
   return (
     <section className="relative">
       {/* Combined Hero and Nav Container */}
@@ -26,12 +59,8 @@ export default function Hero() {
               <button className="bg-blue-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors">
                 Start Your 14-Day Free Trial
               </button>
-              <a
-                href="#contact"
-                className="bg-neutral-800 text-neutral-200 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-neutral-700 transition-colors"
-              >
-                Get a Free Consultation
-              </a>
+              {/* Google Appointment Button */}
+              <div className="google-calendar-button"></div>
             </div>
           </div>
         </div>
