@@ -20,7 +20,7 @@ export default function Services() {
       script.onload = () => {
         // Initialize all buttons once script is loaded
         const targets = document.querySelectorAll(".google-calendar-button");
-        targets.forEach(target => {
+        targets.forEach((target) => {
           if (window.calendar?.schedulingButton && target) {
             window.calendar.schedulingButton.load({
               url: "https://calendar.google.com/calendar/appointments/schedules/AcZssZ1Muso18VEkX645EAFnrNGKPxzS_vFv0Awrd8MpJ6faiphWvytTEtHmLrTnH5np40VZ8cxZTgvS?gv=true",
@@ -103,7 +103,7 @@ export default function Services() {
       name: "CRO & SEO Package",
       description: "Comprehensive analysis and optimization of your store",
       icon: "📈",
-    }
+    },
   ];
 
   const oneTimeServices = [
@@ -116,8 +116,8 @@ export default function Services() {
         "API integrations",
         "Third-party service connections",
         "Technical documentation",
-        "Deployment & maintenance support"
-      ]
+        "Deployment & maintenance support",
+      ],
     },
     {
       name: "CRO & SEO Package",
@@ -128,9 +128,9 @@ export default function Services() {
         "Heatmap implementation",
         "User journey analysis",
         "SEO optimization",
-        "90-day action plan"
-      ]
-    }
+        "90-day action plan",
+      ],
+    },
   ];
 
   return (
@@ -216,7 +216,8 @@ export default function Services() {
             Standalone Services
           </h3>
           <p className="text-neutral-400 text-center mb-12 max-w-2xl mx-auto">
-            Need specific improvements? Our standalone services deliver focused results.
+            Need specific improvements? Our standalone services deliver focused
+            results.
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {standaloneServices.map((service) => (
@@ -246,19 +247,42 @@ export default function Services() {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-neutral-900 rounded-xl p-8 border border-neutral-800/50">
               <div className="text-blue-500 mb-4">
-                <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                <svg
+                  className="w-10 h-10"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M13 10V3L4 14h7v7l9-11h-7z"
+                  />
                 </svg>
               </div>
-              <h4 className="text-xl font-bold text-white mb-3">Shopify Experts</h4>
+              <h4 className="text-xl font-bold text-white mb-3">
+                Shopify Experts
+              </h4>
               <p className="text-neutral-400">
-                Certified Shopify experts with over 5 years of experience building custom solutions.
+                Certified Shopify experts with over 5 years of experience
+                building custom solutions.
               </p>
             </div>
             <div className="bg-neutral-900 rounded-xl p-8 border border-neutral-800/50">
               <div className="text-blue-500 mb-4">
-                <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                <svg
+                  className="w-10 h-10"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                  />
                 </svg>
               </div>
               <h4 className="text-xl font-bold text-white mb-3">Data-Driven</h4>
@@ -268,13 +292,26 @@ export default function Services() {
             </div>
             <div className="bg-neutral-900 rounded-xl p-8 border border-neutral-800/50">
               <div className="text-blue-500 mb-4">
-                <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <svg
+                  className="w-10 h-10"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
                 </svg>
               </div>
-              <h4 className="text-xl font-bold text-white mb-3">Quick Results</h4>
+              <h4 className="text-xl font-bold text-white mb-3">
+                Quick Results
+              </h4>
               <p className="text-neutral-400">
-                Focus on high-impact changes that deliver measurable results fast.
+                Focus on high-impact changes that deliver measurable results
+                fast.
               </p>
             </div>
           </div>

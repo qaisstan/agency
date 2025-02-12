@@ -1,42 +1,45 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { BackgroundBeams } from "./ui/background-beams";
 import Navigation from "./Navigation";
 
 export default function Hero() {
-  const calendarLoaded = useRef(false); // Prevent multiple loads
-
   useEffect(() => {
-    if (calendarLoaded.current) return; // Stop duplicate loading
-    calendarLoaded.current = true; // Mark script as loaded
+    const loadGoogleCalendarButton = () => {
+      const link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href =
+        "https://calendar.google.com/calendar/scheduling-button-script.css";
+      document.head.appendChild(link);
 
-    const script = document.createElement("script");
-    script.src =
-      "https://calendar.google.com/calendar/scheduling-button-script.js";
-    script.async = true;
-    script.onload = () => {
-      const target = document.querySelector(".google-calendar-button");
-      if (window.calendar?.schedulingButton && target) {
-        window.calendar.schedulingButton.load({
-          url: "https://calendar.google.com/calendar/appointments/schedules/AcZssZ1Muso18VEkX645EAFnrNGKPxzS_vFv0Awrd8MpJ6faiphWvytTEtHmLrTnH5np40VZ8cxZTgvS?gv=true",
-          color: "#F6BF26",
-          label: "Book a Call",
-          target,
+      const script = document.createElement("script");
+      script.src =
+        "https://calendar.google.com/calendar/scheduling-button-script.js";
+      script.async = true;
+      script.onload = () => {
+        const targets = document.querySelectorAll(".google-calendar-button");
+        targets.forEach((target) => {
+          if (window.calendar?.schedulingButton && target) {
+            window.calendar.schedulingButton.load({
+              url: "https://calendar.google.com/calendar/appointments/schedules/AcZssZ1Muso18VEkX645EAFnrNGKPxzS_vFv0Awrd8MpJ6faiphWvytTEtHmLrTnH5np40VZ8cxZTgvS?gv=true",
+              color: "#F6BF26",
+              label: "Book a Call",
+              target,
+            });
+          }
         });
-      }
+      };
+      document.body.appendChild(script);
     };
-    document.body.appendChild(script);
+
+    loadGoogleCalendarButton();
   }, []);
 
   return (
     <section className="relative">
-      {/* Combined Hero and Nav Container */}
       <div className="h-screen w-full relative flex flex-col bg-neutral-950 antialiased">
-        {/* Navigation */}
         <Navigation />
-
-        {/* Hero Content */}
         <div className="flex-1 flex items-center justify-center">
           <div className="max-w-7xl mx-auto p-4 text-center relative z-10">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-neutral-200 to-neutral-600 mb-6">
@@ -50,13 +53,10 @@ export default function Hero() {
               <button className="bg-blue-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors">
                 Start Your 14-Day Free Trial
               </button>
-              {/* Google Appointment Button (Only One Will Render) */}
               <div className="google-calendar-button"></div>
             </div>
           </div>
         </div>
-
-        {/* Background Effect */}
         <BackgroundBeams />
       </div>
     </section>
