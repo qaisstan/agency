@@ -1,7 +1,42 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Services() {
+  useEffect(() => {
+    // Dynamically load Google Calendar's CSS and JS
+    const loadGoogleCalendarButton = () => {
+      // Load the stylesheet
+      const link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href =
+        "https://calendar.google.com/calendar/scheduling-button-script.css";
+      document.head.appendChild(link);
+
+      // Load the script
+      const script = document.createElement("script");
+      script.src =
+        "https://calendar.google.com/calendar/scheduling-button-script.js";
+      script.async = true;
+      script.onload = () => {
+        // Initialize all buttons once script is loaded
+        const targets = document.querySelectorAll(".google-calendar-button");
+        targets.forEach(target => {
+          if (window.calendar?.schedulingButton && target) {
+            window.calendar.schedulingButton.load({
+              url: "https://calendar.google.com/calendar/appointments/schedules/AcZssZ1Muso18VEkX645EAFnrNGKPxzS_vFv0Awrd8MpJ6faiphWvytTEtHmLrTnH5np40VZ8cxZTgvS?gv=true",
+              color: "#F6BF26", // Yellow color
+              label: "Book a call", // Button label
+              target,
+            });
+          }
+        });
+      };
+      document.body.appendChild(script);
+    };
+
+    loadGoogleCalendarButton();
+  }, []);
+
   const retainerPlans = [
     {
       name: "Growth Essentials Plan",
@@ -59,6 +94,43 @@ export default function Services() {
       description: "Make data-driven decisions with structured testing",
       icon: "🎯",
     },
+    {
+      name: "Custom Shopify Apps",
+      description: "Tailor-made solutions to extend your store's functionality",
+      icon: "🔧",
+    },
+    {
+      name: "CRO & SEO Package",
+      description: "Comprehensive analysis and optimization of your store",
+      icon: "📈",
+    }
+  ];
+
+  const oneTimeServices = [
+    {
+      name: "Custom Shopify App Development",
+      price: "$5,000+",
+      description: "Tailor-made solutions to extend your store's functionality",
+      features: [
+        "Custom app development",
+        "API integrations",
+        "Third-party service connections",
+        "Technical documentation",
+        "Deployment & maintenance support"
+      ]
+    },
+    {
+      name: "CRO & SEO Package",
+      price: "$3,500",
+      description: "Comprehensive analysis and optimization of your store",
+      features: [
+        "Full store CRO audit",
+        "Heatmap implementation",
+        "User journey analysis",
+        "SEO optimization",
+        "90-day action plan"
+      ]
+    }
   ];
 
   return (
@@ -139,11 +211,14 @@ export default function Services() {
         </div>
 
         {/* Standalone Services */}
-        <div className="mt-24">
-          <h3 className="text-2xl font-bold text-white text-center mb-12">
+        <div className="mt-32">
+          <h3 className="text-2xl font-bold text-white text-center mb-6">
             Standalone Services
           </h3>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <p className="text-neutral-400 text-center mb-12 max-w-2xl mx-auto">
+            Need specific improvements? Our standalone services deliver focused results.
+          </p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {standaloneServices.map((service) => (
               <div
                 key={service.name}
@@ -156,6 +231,56 @@ export default function Services() {
                 <p className="text-neutral-400">{service.description}</p>
               </div>
             ))}
+          </div>
+          {/* Book a Call Button */}
+          <div className="text-center mt-12">
+            <div className="google-calendar-button"></div>
+          </div>
+        </div>
+
+        {/* Why Work With Us Section */}
+        <div className="mt-32">
+          <h3 className="text-2xl font-bold text-white text-center mb-6">
+            Why Work With Us?
+          </h3>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="bg-neutral-900 rounded-xl p-8 border border-neutral-800/50">
+              <div className="text-blue-500 mb-4">
+                <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <h4 className="text-xl font-bold text-white mb-3">Shopify Experts</h4>
+              <p className="text-neutral-400">
+                Certified Shopify experts with over 5 years of experience building custom solutions.
+              </p>
+            </div>
+            <div className="bg-neutral-900 rounded-xl p-8 border border-neutral-800/50">
+              <div className="text-blue-500 mb-4">
+                <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              </div>
+              <h4 className="text-xl font-bold text-white mb-3">Data-Driven</h4>
+              <p className="text-neutral-400">
+                Every decision backed by analytics and real user behavior data.
+              </p>
+            </div>
+            <div className="bg-neutral-900 rounded-xl p-8 border border-neutral-800/50">
+              <div className="text-blue-500 mb-4">
+                <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h4 className="text-xl font-bold text-white mb-3">Quick Results</h4>
+              <p className="text-neutral-400">
+                Focus on high-impact changes that deliver measurable results fast.
+              </p>
+            </div>
+          </div>
+          {/* Book a Call Button */}
+          <div className="text-center mt-12">
+            <div className="google-calendar-button"></div>
           </div>
         </div>
       </div>
