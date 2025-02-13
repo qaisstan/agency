@@ -90,7 +90,7 @@ export default function FAQ() {
         </div>
 
         {/* Contact CTA */}
-        <div className="text-center bg-blue-600 rounded-2xl p-8 mt-12">
+        <div id="still-have-questions" className="text-center bg-blue-600 rounded-2xl p-8 mt-12">
           <h3 className="text-2xl font-bold text-white mb-4">
             Still have questions?
           </h3>

@@ -14,11 +14,18 @@ export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
-    { name: "Home", href: "#home" },
+    { name: "Home", href: "#top" },
     { name: "Services", href: "#services" },
     { name: "FAQ", href: "#faq" },
-    { name: "Contact", href: "#contact" },
+    { name: "Contact", href: "#still-have-questions" },
   ];
+
+  const scrollToTop = (e) => {
+    if (e.target.getAttribute('href') === '#top') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   return (
     <nav className="fixed top-0 w-full z-50">
@@ -30,7 +37,10 @@ export default function Navigation() {
               {navItems.map((item) => (
                 <NavigationMenuItem key={item.name}>
                   <Link href={item.href} legacyBehavior passHref>
-                    <NavigationMenuLink className="text-neutral-200 hover:text-white px-4 py-2 text-sm font-medium">
+                    <NavigationMenuLink 
+                      className="text-neutral-200 hover:text-white px-4 py-2 text-sm font-medium"
+                      onClick={scrollToTop}
+                    >
                       {item.name}
                     </NavigationMenuLink>
                   </Link>
@@ -87,7 +97,10 @@ export default function Navigation() {
                 key={item.name}
                 href={item.href}
                 className="block px-3 py-2 rounded-md text-base font-medium text-neutral-200 hover:text-white hover:bg-neutral-800/50"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={(e) => {
+                  setIsMenuOpen(false);
+                  scrollToTop(e);
+                }}
               >
                 {item.name}
               </Link>
