@@ -1,39 +1,44 @@
 "use client";
 
 import React, { useEffect } from "react";
+import Script from "next/script";
 import { BackgroundBeams } from "./ui/background-beams";
 import Navigation from "./Navigation";
 
 export default function Hero() {
   useEffect(() => {
-    const loadGoogleCalendarButton = () => {
-      const link = document.createElement("link");
-      link.rel = "stylesheet";
-      link.href =
-        "https://calendar.google.com/calendar/scheduling-button-script.css";
-      document.head.appendChild(link);
+    // Add CSS
+    const link = document.createElement('link');
+    link.href = 'https://calendar.google.com/calendar/scheduling-button-script.css';
+    link.rel = 'stylesheet';
+    document.head.appendChild(link);
 
-      const script = document.createElement("script");
-      script.src =
-        "https://calendar.google.com/calendar/scheduling-button-script.js";
-      script.async = true;
-      script.onload = () => {
-        const targets = document.querySelectorAll(".google-calendar-button");
-        targets.forEach((target) => {
-          if (window.calendar?.schedulingButton && target) {
-            window.calendar.schedulingButton.load({
-              url: "https://calendar.google.com/calendar/appointments/schedules/AcZssZ1Muso18VEkX645EAFnrNGKPxzS_vFv0Awrd8MpJ6faiphWvytTEtHmLrTnH5np40VZ8cxZTgvS?gv=true",
-              color: "#F6BF26",
-              label: "Book a Call",
-              target,
-            });
-          }
+    const initCalendar = () => {
+      if (window.calendar?.schedulingButton) {
+        const target = document.getElementById('calendar-button');
+        window.calendar.schedulingButton.load({
+          url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ1Muso18VEkX645EAFnrNGKPxzS_vFv0Awrd8MpJ6faiphWvytTEtHmLrTnH5np40VZ8cxZTgvS?gv=true',
+          color: '#F6BF26',
+          label: "Book a Call",
+          target,
         });
-      };
-      document.body.appendChild(script);
+      }
     };
 
-    loadGoogleCalendarButton();
+    // Initialize after script loads
+    const script = document.createElement('script');
+    script.src = 'https://calendar.google.com/calendar/scheduling-button-script.js';
+    script.async = true;
+    script.onload = initCalendar;
+    document.body.appendChild(script);
+
+    return () => {
+      // Cleanup
+      document.head.removeChild(link);
+      if (script.parentNode) {
+        document.body.removeChild(script);
+      }
+    };
   }, []);
 
   return (
@@ -53,7 +58,7 @@ export default function Hero() {
               <button className="bg-blue-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors">
                 Start Your 14-Day Free Trial
               </button>
-              <div className="google-calendar-button"></div>
+              <div id="calendar-button"></div>
             </div>
           </div>
         </div>
