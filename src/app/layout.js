@@ -6,6 +6,9 @@ export const metadata = {
     "Expert Shopify development, marketing analytics, and CRO services tailored to help your e-commerce business grow.",
   keywords:
     "Shopify development, marketing analytics, CRO, e-commerce optimization",
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({ children }) {
